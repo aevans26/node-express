@@ -16,10 +16,11 @@ Visit http://localhost:5000`);
 // Home route
 app.get("/", async (req, res) => {
   var fse = require('fs-extra');
-  //var contents = await fse.readFile("index.html", 'utf8');
-  //res.send(contents);
+  var contents = await fse.readFile("./index.html", 'utf8');
+  res.write(contents);
   var hello = require('./hello.js');
-  res.send(hello);
+  res.write(hello);
+  res.end();
   //res.send("Welcome to a basic express App.");
 });
 
