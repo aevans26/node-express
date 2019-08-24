@@ -20,5 +20,10 @@
         "dest": "/api/index.js",
         "methods": ["POST"]
         }
-    ]
+    ],
+ "build": {
+    "env": {
+      "NOW_PGCREDENTIALS": "@pgcredentials"
+    }
+  }    
 }

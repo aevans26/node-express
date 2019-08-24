@@ -21,7 +21,7 @@ app.get("/api", async (req, res) => {
 
 //console.log(process.env);
 
-  var output = "find secret? = " + Object.keys(process.env).filter(x=>/credential/.test(x)) + "<br/>";
+  var output = "find secret? = " + Object.keys(process.env).filter(x=>/NOW_PGCREDENTIALS/.test(x)) + "<br/>";
   
   output += "req.hostname = " + req.hostname + "<br/>";
   output += "os.hostname = " + os.hostname + "<br/>";
