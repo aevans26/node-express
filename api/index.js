@@ -19,7 +19,10 @@ app.get("/api", async (req, res) => {
   var path = require('path');
   var os = require('os');
 
-  var output = "req.host = " + req.host + "<br/>";
+//console.log(process.env);
+
+  var output = "find secret? = " + Object.keys(process.env).filter(x=>/credential/.test(x)) + "<br/>";
+  
   output += "req.hostname = " + req.hostname + "<br/>";
   output += "os.hostname = " + os.hostname + "<br/>";
   var contents = await fse.readFile(path.join(__dirname, 'index.txt'), 'utf8');
