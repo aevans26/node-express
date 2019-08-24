@@ -24,6 +24,7 @@ app.get("/users", (req, res) => {
     { name: "William", location: "Abu Dhabi" },
     { name: "Chris", location: "Vegas" },
     { name: "Aaron", location: "Jupiter" },
+    { name: "Jbo", location: "Umatilla" }
   ]);
 });
 
