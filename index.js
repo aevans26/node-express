@@ -25,7 +25,7 @@ app.get("/users", (req, res) => {
     { name: "Chris", location: "Vegas" },
     { name: "Aaron", location: "Jupiter" },
     { name: "Jbo", location: "Umatilla" },
-    { name: "Trent", location: "WPB" }
+    { name: "Trenton", location: "WPB" }
   ]);
 });
 
