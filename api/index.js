@@ -16,7 +16,7 @@ Visit http://localhost:5000`);
 // Home route
 app.get("/api", async (req, res) => {
   var fse = require('fs-extra');
-  var contents = await fse.readFile("./index.html", 'utf8');
+  var contents = await fse.readFile("../index.html", 'utf8');
 //  res.write(contents);
   var hello = require('./hello.js');
 //  res.write(hello);

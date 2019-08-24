@@ -7,17 +7,17 @@
     "routes": [
         {
         "src": "/api",
-        "dest": "/index.js",
+        "dest": "/api/index.js",
         "methods": ["GET"]
         },
         {
         "src": "/api/users",
-        "dest": "/index.js",
+        "dest": "/api/index.js",
         "methods": ["GET"]
         },
         {
         "src": "/api/user",
-        "dest": "/index.js",
+        "dest": "/api/index.js",
         "methods": ["POST"]
         }
     ]
