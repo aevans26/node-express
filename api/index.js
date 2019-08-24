@@ -16,11 +16,14 @@ Visit http://localhost:5000`);
 // Home route
 app.get("/api", async (req, res) => {
   var fse = require('fs-extra');
-  var contents = await fse.readFile("../index.html", 'utf8');
+  var path = require('path');
+  
+//  var contents = await fse.readFile(path.join(__dirname, 'index.html'), 'utf8');
 //  res.write(contents);
   var hello = require('./hello.js');
 //  res.write(hello);
-  res.send("hello.js = " + hello + "<br/><br/>index.html = " + contents);
+  res.send(__dirname + " hello.js = " + hello + "<br/><br/>index.html = ");
+//  res.send(__dirname + " hello.js = " + hello + "<br/><br/>index.html = " + contents);
 //  res.end();
   //res.send("Welcome to a basic express App.");
 });
