@@ -23,7 +23,7 @@ app.get("/api", async (req, res) => {
   var hello = require('./hello.js');
 //  res.write(hello);
 //  res.send(__dirname + " hello.js = " + hello + "<br/><br/>index.html = ");
-  res.send("__dirname = " + __dirname + "<br/><br/> hello.js = " + hello + "<br/><br/>index.html = " + contents);
+  res.send("__dirname = " + __dirname + "<br/><br/> hello.js = " + hello + "<br/><br/>index.txt = " + contents);
 //  res.end();
   //res.send("Welcome to a basic express App.");
 });

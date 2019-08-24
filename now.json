@@ -2,8 +2,7 @@
     "version": 2,
     "builds": [
         { "src": "api/index.js", "use": "@now/node-server" },
-        { "src": "*.html", "use": "@now/static"},
-        { "src": "*.txt", "use": "@now/static"}
+        { "src": "*/**", "use": "@now/static"}
         ],
     "routes": [
         {
