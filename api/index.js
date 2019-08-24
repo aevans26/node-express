@@ -17,14 +17,19 @@ Visit http://localhost:5000`);
 app.get("/api", async (req, res) => {
   var fse = require('fs-extra');
   var path = require('path');
-  
+  var os = require('os');
+
+  var output = "req.host = " + req.host + "<br/>";
+  output += "req.hostname = " + req.hostname + "<br/>";
+  output += "os.hostname = " + os.hostname + "<br/>";
   var contents = await fse.readFile(path.join(__dirname, 'index.txt'), 'utf8');
-//  res.write(contents);
   var hello = require('./hello.js');
-//  res.write(hello);
-//  res.send(__dirname + " hello.js = " + hello + "<br/><br/>index.html = ");
-  res.send("__dirname = " + __dirname + "<br/><br/> hello.js = " + hello + "<br/><br/>index.txt = " + contents);
-//  res.end();
+
+  output += "__dirname = " + __dirname + "<br/>";
+  output += "hello.js = " + hello + "<br/>";
+  output += "index.txt = " + contents + "<br/>";
+
+  res.send(output);
   //res.send("Welcome to a basic express App.");
 });
 
