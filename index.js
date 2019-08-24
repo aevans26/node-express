@@ -14,7 +14,7 @@ Visit http://localhost:5000`);
 });
 
 // Home route
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   var fse = require('fs-extra');
   var contents = await fse.readFile("./index.html", 'utf8');
 //  res.write(contents);
@@ -26,7 +26,7 @@ app.get("/", async (req, res) => {
 });
 
 // Mock APIs
-app.get("/users", async (req, res) => {
+app.get("/api/users", async (req, res) => {
   let result = await callDB('SELECT id,name,location FROM users');
   return res.json(result.rows);
   /*
@@ -40,7 +40,7 @@ app.get("/users", async (req, res) => {
   */
 });
 
-app.post("/user", (req, res) => {
+app.post("/api/user", (req, res) => {
   const { name, location } = req.body;
 
   res.send({ status: "User created", name, location });
@@ -65,25 +65,3 @@ async function callDB(query) {
   return result;
 }
 
-async function callDB2(query) {
-  var pg = require('pg');
-  //or native libpq bindings
-  //var pg = require('pg').native
-
-  var conString = "postgres://nzivzfbg:2oocpudzBzBBsyiHlmBNhFND8Ye92fJ3@isilo.db.elephantsql.com:5432/nzivzfbg" //Can be found in the Details page
-  var client = new pg.Client(conString);
-  client.connect(function(err) {
-    if(err) {
-      return console.error('could not connect to postgres', err);
-    }
-    client.query(query, function(err, result) {
-      if(err) {
-        return console.error('error running query', err);
-      }
-      console.log(result.rows);
-      // >> output: 2018-08-23T14:02:57.117Z
-      client.end();
-    });
-  });
-
-}

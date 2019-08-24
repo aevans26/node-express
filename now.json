@@ -6,12 +6,17 @@
         ],
     "routes": [
         {
-        "src": "/users",
+        "src": "/api",
         "dest": "/index.js",
         "methods": ["GET"]
         },
         {
-        "src": "/user",
+        "src": "/api/users",
+        "dest": "/index.js",
+        "methods": ["GET"]
+        },
+        {
+        "src": "/api/user",
         "dest": "/index.js",
         "methods": ["POST"]
         }
