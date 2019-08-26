@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+Name:<br/>
+<input data-bind="value:newUser.name" /><br/>
+Location:<br/>
+<input data-bind="value:newUser.location" /><br/><br/>
+<button data-bind="click:add" >Add user</button><br/>
+<div style="padding-top:10px">
+<table>    
+    <thead style="">
+        <tr>
+            <td>Name</td>
+            <td>Location</td>
+        </tr>        
+    </thead>
+    <tbody data-bind="foreach:users">
+        <tr>
+            <td data-bind="text:name"></td>
+            <td data-bind="text:location"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js" ></script>
+
+<script>
+    var nodeExpress = {};
+    nodeExpress.vm = {
+        newUser : {
+            name:ko.observable(),
+            location:ko.observable(),
+        },
+        users:ko.observableArray(),
+        add: async function () {
+            var newUser = ko.mapping.toJS(this.newUser);
+            var options = {
+                method: 'post',
+                body: JSON.stringify(newUser),
+                 headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+            await fetch('/api/users/add',options);
+            this.users.push(newUser);
+            
+        },
+        init: async function () {
+            let response = await fetch('/api/users/list');
+            let users = await response.json();
+            this.users.push.apply(this.users,users);
+        }
+    };
+    ko.applyBindings(nodeExpress.vm);
+    nodeExpress.vm.init();
+</script>    
+</body>    
+</html>
