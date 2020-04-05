@@ -3,7 +3,7 @@ module.exports = function (app) {
     console.log(app.get("root"));
     console.log(__dirname);
 //    const database = require(app.get("root") + "/api/database.js");
-//    const database = require("../../database.js");
+    const database = require("../database.js");
 
     app.get("/api/users/list", async (req, res) => {
         console.log(app.get("appRoot"));

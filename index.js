@@ -33,7 +33,8 @@ app.get("/api", async (req, res) => {
 //console.log(process.env);
 
   var output = "find secret? = " + Object.keys(process.env).filter(x=>/NOW_PGCREDENTIALS/.test(x)) + "<br/>";
-  output += "process.env = " + process.env.NOW_PGCREDENTIALS + "<br/>";
+  output += "process.env.NOW_PGCREDENTIALS = " + process.env.NOW_PGCREDENTIALS + "<br/>";
+  output += "process.env.NOW_PGCREDENTIALS2 = " + process.env.NOW_PGCREDENTIALS2 + "<br/>";
   output += "process.env = " + process.env.pgcredentials + "<br/>";
   output += "process.env = " + process.env["@pgcredentials"] + "<br/>";
   
