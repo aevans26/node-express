@@ -2,7 +2,7 @@
 const express = require("express");
 const app = express();
 
-require('dotenv').config();
+//require('dotenv').config();
 
 app.set("root",__dirname);
 var appRoot = require('app-root-path');
@@ -55,6 +55,7 @@ app.get("/api", async (req, res) => {
   var output = "find secret? = " + Object.keys(process.env).filter(x=>/NOW_PGCREDENTIALS/.test(x)) + "<br/>";
   output += "process.env.NOW_PGCREDENTIALS = " + process.env.NOW_PGCREDENTIALS + "<br/>";
   output += "process.env.NOW_GITHUB_COMMIT_REF = " + process.env.NOW_GITHUB_COMMIT_REF + "<br/>";
+  output += "process.version = " + process.version + "<br/>";
 
   output += "req.hostname = " + req.hostname + "<br/>";
   output += "os.hostname = " + os.hostname + "<br/>";
