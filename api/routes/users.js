@@ -1,16 +1,16 @@
 module.exports = function (app) {
-    console.log(app.get("appRoot"));
-    console.log(app.get("root"));
-    console.log(__dirname);
+//    console.log("appRoot " + app.get("appRoot"));
+//    console.log("root " + app.get("root"));
+//    console.log("__dirname " + __dirname);
 //    const database = require(app.get("root") + "/api/database.js");
-    const database = require("../database.js");
+    const database = rootRequire("api/database.js");
 
     app.get("/api/users/list", async (req, res) => {
-        console.log(app.get("appRoot"));
-        console.log(app.get("root"));
-        console.log(__dirname);
+//        console.log(app.get("appRoot"));
+//        console.log(app.get("root"));
+//        console.log(__dirname);
         let result = await database.call('SELECT id,name,location FROM users');
-        result.rows.push(app.get("appRoot"),app.get("root"),__dirname)
+//        result.rows.push(app.get("appRoot"),app.get("root"),__dirname);
         return res.json(result.rows);
         /*
         res.json([
@@ -36,4 +36,4 @@ module.exports = function (app) {
     //  return res.json(result.rows);
     
     });
-}
+};

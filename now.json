@@ -27,6 +27,7 @@
     ],
     "env": {
         "NOW_PGCREDENTIALS": "@pgcredentials",
-        "NOW_PGCREDENTIALS2": "@pgcredentials2"
-    }    
+        "NODE_PATH":"."
+
+    }
 }
