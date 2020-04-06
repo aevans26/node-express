@@ -2,7 +2,7 @@ module.exports = function (app) {
 //    console.log("appRoot " + app.get("appRoot"));
 //    console.log("root " + app.get("root"));
 //    console.log("__dirname " + __dirname);
-    const database = require("@root/api/database.js");
+    const database = rootRequire("api/database.js");
 
     app.get("/api/users/list", async (req, res) => {
 //        console.log(app.get("appRoot"));

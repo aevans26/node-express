@@ -1,5 +1,5 @@
 //so we can require local stuff like require('@root/moduleName')
-require('module-alias/register');
+//require('module-alias/register');
 // Import Dependencies
 const express = require("express");
 const app = express();
@@ -53,7 +53,7 @@ app.get("/api", async (req, res) => {
   output += "req.hostname = " + req.hostname + "<br/>";
   output += "os.hostname = " + os.hostname + "<br/>";
   var contents = await fse.readFile(path.join(__dirname, 'api/index.txt'), 'utf8');
-  var hello = require('@root/api/hello.js');
+  var hello = rootRequire('api/hello.js');
 
   output += "__dirname = " + __dirname + "<br/>";
   output += "hello.js = " + hello + "<br/>";
@@ -64,5 +64,5 @@ app.get("/api", async (req, res) => {
   //res.send("Welcome to a basic express App.");
 });
 
-require('@root/api/routes/users.js')(app);
+rootRequire('api/routes/users.js')(app);
 
