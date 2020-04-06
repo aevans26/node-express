@@ -1,8 +1,10 @@
+//so we can require local stuff like require('@root/moduleName')
+require('module-alias/register');
 // Import Dependencies
 const express = require("express");
 const app = express();
 
-//require('dotenv').config();
+require('dotenv').config();
 
 app.set("root",__dirname);
 var appRoot = require('app-root-path');
@@ -15,15 +17,6 @@ global.rootRequire = function (name) {
         return require(name);
     }
 };
-
-/*
-console.log(process.env.NODE_PATH);
-if (!process.env.NODE_PATH) {
-	process.env.NODE_PATH=appRoot.toString();
-	require('module').Module._initPaths();	
-}
-console.log(process.env.NODE_PATH);
-*/
 
 const port = 5000;
 
@@ -60,7 +53,7 @@ app.get("/api", async (req, res) => {
   output += "req.hostname = " + req.hostname + "<br/>";
   output += "os.hostname = " + os.hostname + "<br/>";
   var contents = await fse.readFile(path.join(__dirname, 'api/index.txt'), 'utf8');
-  var hello = rootRequire('api/hello.js');
+  var hello = require('@root/api/hello.js');
 
   output += "__dirname = " + __dirname + "<br/>";
   output += "hello.js = " + hello + "<br/>";
@@ -71,5 +64,5 @@ app.get("/api", async (req, res) => {
   //res.send("Welcome to a basic express App.");
 });
 
-rootRequire('api/routes/users.js')(app);
+require('@root/api/routes/users.js')(app);
 

@@ -16,6 +16,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs-extra": "^8.1.0",
+    "module-alias": "^2.2.2",
     "pg": "^7.12.1"
+  },
+  "_moduleAliases": {
+    "@root": "."
   }
 }
