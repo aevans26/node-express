@@ -10,7 +10,7 @@ app.set("appRoot", appRoot);
 
 global.rootRequire = function (name) {
     if (!process.env.NODE_PATH) {
-        return require(`${appRoot}/${name}`);
+        return require(appRoot + '/' + name);
     } else {
         return require(name);
     }
