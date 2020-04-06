@@ -66,5 +66,5 @@ app.get("/api", async (req, res) => {
   //res.send("Welcome to a basic express App.");
 });
 
-require('./api/routes/users.js')(app);
+//require('./api/routes/users.js')(app);
 
