@@ -10,6 +10,8 @@ app.set("root",__dirname);
 var appRoot = require('app-root-path');
 app.set("appRoot", appRoot);
 
+//This doesn't work in zeit now because process.env.NODE_PATH doesn't work unless using next.js stuff
+//Just going back to sucky relative path names
 global.rootRequire = function (name) {
     if (!process.env.NODE_PATH) {
         return require(appRoot + '/' + name);
@@ -53,7 +55,7 @@ app.get("/api", async (req, res) => {
   output += "req.hostname = " + req.hostname + "<br/>";
   output += "os.hostname = " + os.hostname + "<br/>";
   var contents = await fse.readFile(path.join(__dirname, 'api/index.txt'), 'utf8');
-  var hello = rootRequire('api/hello.js');
+  var hello = require('./api/hello.js');
 
   output += "__dirname = " + __dirname + "<br/>";
   output += "hello.js = " + hello + "<br/>";
@@ -64,5 +66,5 @@ app.get("/api", async (req, res) => {
   //res.send("Welcome to a basic express App.");
 });
 
-rootRequire('api/routes/users.js')(app);
+require('./api/routes/users.js')(app);
 
